@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/mrlonmra/mouradev_reactjs/blob/main/src/App.js/static/css/main.27aa250e.css",
-    "main.js": "/mrlonmra/mouradev_reactjs/blob/main/src/App.js/static/js/main.c1ddaf94.js",
-    "static/media/ai.png": "/mrlonmra/mouradev_reactjs/blob/main/src/App.js/static/media/ai.aa60586ba1ba53762d94.png",
-    "static/media/possibility.png": "/mrlonmra/mouradev_reactjs/blob/main/src/App.js/static/media/possibility.525f13b61a2157d44de0.png",
-    "static/media/people.png": "/mrlonmra/mouradev_reactjs/blob/main/src/App.js/static/media/people.5cd2d6fbcd48bd63f106.png",
-    "index.html": "/mrlonmra/mouradev_reactjs/blob/main/src/App.js/index.html",
-    "main.27aa250e.css.map": "/mrlonmra/mouradev_reactjs/blob/main/src/App.js/static/css/main.27aa250e.css.map",
-    "main.c1ddaf94.js.map": "/mrlonmra/mouradev_reactjs/blob/main/src/App.js/static/js/main.c1ddaf94.js.map"
+    "main.css": "/mrlonmra/mouradev_reactjs/static/css/main.27aa250e.css",
+    "main.js": "/mrlonmra/mouradev_reactjs/static/js/main.c8a7ab6e.js",
+    "static/media/ai.png": "/mrlonmra/mouradev_reactjs/static/media/ai.aa60586ba1ba53762d94.png",
+    "static/media/possibility.png": "/mrlonmra/mouradev_reactjs/static/media/possibility.525f13b61a2157d44de0.png",
+    "static/media/people.png": "/mrlonmra/mouradev_reactjs/static/media/people.5cd2d6fbcd48bd63f106.png",
+    "index.html": "/mrlonmra/mouradev_reactjs/index.html",
+    "main.27aa250e.css.map": "/mrlonmra/mouradev_reactjs/static/css/main.27aa250e.css.map",
+    "main.c8a7ab6e.js.map": "/mrlonmra/mouradev_reactjs/static/js/main.c8a7ab6e.js.map"
   },
   "entrypoints": [
     "static/css/main.27aa250e.css",
-    "static/js/main.c1ddaf94.js"
+    "static/js/main.c8a7ab6e.js"
   ]
 }
