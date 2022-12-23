@@ -1,4 +1,3 @@
-import React from 'react';
 import php from '../../assets/img_php.png';
 import python from '../../assets/img_python.png';
 import html from '../../assets/img_html.png';
