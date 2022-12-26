@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import people from "../../assets/people.png";
 import ai from "../../assets/ai.png";
 import "./header.css";
@@ -9,28 +8,49 @@ function Header() {
     mensagem: "",
   });
 
-  function handleInputChange(event) {
-    campos[event.target.name] = event.target.value;
-    setCampos(campos);
-  }
+  const [response, setResponse] = useState({
+    type: "",
+    mensagem: "",
+  });
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    console.log(campos);
-    send();
-  }
+  const onChangeInput = (e) =>
+    setCampos({ ...campos, [e.target.name]: e.target.value });
 
-  function send() {
-    const formData = new FormData();
-    Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
-    axios
-      .post("/send-email", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then(response => { console.log(response.data); })
-  }
+  const sendContact = async (e) => {
+    e.preventDefault();
+    console.log("E-mail enviado com Sucesso! ", campos);
+    try {
+      const res = await fetch("/send-email", {
+        method: "POST",
+        body: JSON.stringify(campos),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const responseEnv = await res.json();
+
+      if (responseEnv.erro) {
+        setResponse({
+          type: "error",
+          mensagem: responseEnv.mensagem,
+        });
+      } else {
+        setResponse({
+          type: "success",
+          mensagem: responseEnv.mensagem,
+        });
+
+        setCampos({
+          mensagem: "",
+        });
+      }
+    } catch (err) {
+      setResponse({
+        type: "error",
+        mensagem: "Erro: Tente mais tarde!",
+      });
+    }
+    console.log("RESPOSTA JSON: COLOCAR RETORNO SUCESSO AQUI");
+  };
 
   return (
     <div className="gpt3__header section__padding" id="home">
@@ -44,19 +64,30 @@ function Header() {
           <b>Caso queira entrar em contato deixe seu e-mail abaixo!</b>
         </p>
 
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={sendContact}>
           <div className="gpt3__header-content__input">
             <input
               type="email"
               id="mensagem"
               name="mensagem"
               placeholder="Digite seu e-mail."
-              onChange={handleInputChange}
+              onChange={onChangeInput}
+              value={campos.mensagem}
+              required
             />
             <button type="submit">Entrar em Contato</button>
           </div>
         </form>
-
+        {response.type === "error" ? (
+          <p className="alert-danger">{response.mensagem}</p>
+        ) : (
+          ""
+        )}
+        {response.type === "success" ? (
+          <p className="alert-success">{response.mensagem}</p>
+        ) : (
+          ""
+        )}
         <div className="gpt3__header-content__people">
           <img src={people} alt="pessoas" />
           <p>Mais de 150 clientes atendidos nessa tragetória!</p>

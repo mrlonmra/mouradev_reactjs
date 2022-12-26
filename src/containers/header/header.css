@@ -166,3 +166,23 @@
       line-height: 16px;
   }
 }
+
+.alert-danger{
+  font-family: var(--font-family);
+  color: var(#000);
+  background-color: #f8d7da;
+  color: #842029;
+  margin: 10px 0;
+  border: 1px solid #f5c2c7;
+  border-radius: 6px;
+  padding: 7px;
+}
+
+.alert-success{
+  font-family: var(--font-family);
+  background-color: rgba(4, 12, 24, 1);
+  margin: 10px 0;
+  border: 1px solid rgba(0, 40, 83, 1);
+  border-radius: 6px;
+  padding: 7px;
+}
