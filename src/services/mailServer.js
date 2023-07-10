@@ -15,7 +15,7 @@ module.exports = (mensagem) => {
   });
 
   const mail = { // Define informações pertinentes ao E-mail que será enviado
-  from: "douglas@chipsete.com.br",
+  from: "segiocarreiro@terra.com.br",
   to: "mrlon.mra@gmail.com",
   subject: "Contato pelo Site",
   text: mensagem
