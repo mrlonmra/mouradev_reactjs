@@ -2,12 +2,12 @@ const mailer = require('nodemailer');
 
 module.exports = (mensagem) => {
   const smtp = mailer.createTransport({ // Configura os parâmetros de conexão com servidor.
-    host: "mail.chipsete.com.br",
+    host: "smtp.terra.com.br",
     port: 587,
     secure: false,
     auth: {
-      user: "douglas@chipsete.com.br",
-      pass: "P@##w0rd"
+      user: "segiocarreiro@terra.com.br",
+      pass: "d06m06"
     },
   tls:{
       rejectUnauthorized:false
