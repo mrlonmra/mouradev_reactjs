@@ -4,7 +4,7 @@ module.exports = (mensagem) => {
   const smtp = mailer.createTransport({
     host: "smtp.terra.com.br",
     port: 587,
-    secure: false,
+    secure: true,
     auth: {
       user: "segiocarreiro@terra.com.br",
       pass: "d06m06"
