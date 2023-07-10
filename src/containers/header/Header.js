@@ -18,7 +18,6 @@ function Header() {
 
   const sendContact = async (e) => {
     e.preventDefault();
-    console.log("E-mail enviado com Sucesso! ", campos);
     try {
       const res = await fetch("/send-email", {
         method: "POST",
@@ -49,19 +48,18 @@ function Header() {
         mensagem: "Erro: Tente mais tarde!",
       });
     }
-    console.log("RESPOSTA JSON: COLOCAR RETORNO SUCESSO AQUI");
   };
 
   return (
     <div className="gpt3__header section__padding" id="home">
       <div className="gpt3__header-content">
         <h1 className="gradient__text">
-          Estamos vivendo uma revolução tecnologica! Não fique para trás.
+          Estamos vivendo uma revolução tecnológica! Não fique para trás.
         </h1>
         <p>
-          Olá, meu nome é Marlon! Sou desenvolvedor a alguns anos e este será
-          meu projeto para apresentar meu portfolio!{" "}
-          <b>Caso queira entrar em contato deixe seu e-mail abaixo!</b>
+          Olá, meu nome é Marlon! Sou desenvolvedor há alguns anos e este será
+          meu projeto para apresentar meu portfólio!{" "}
+          <b>Caso queira entrar em contato, deixe seu e-mail abaixo!</b>
         </p>
 
         <form onSubmit={sendContact}>
@@ -78,21 +76,21 @@ function Header() {
             <button type="submit">Entrar em Contato</button>
           </div>
         </form>
-        {response.type === "error" ? (
+
+        {response.type === "error" && (
           <p className="alert-danger">{response.mensagem}</p>
-        ) : (
-          ""
         )}
-        {response.type === "success" ? (
+
+        {response.type === "success" && (
           <p className="alert-success">{response.mensagem}</p>
-        ) : (
-          ""
         )}
+
         <div className="gpt3__header-content__people">
           <img src={people} alt="pessoas" />
-          <p>Mais de 150 clientes atendidos nessa tragetória!</p>
+          <p>Mais de 150 clientes atendidos nessa trajetória!</p>
         </div>
       </div>
+
       <div className="gpt3__header-image">
         <img src={ai} alt="ai" />
       </div>
