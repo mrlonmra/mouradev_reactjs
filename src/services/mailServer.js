@@ -1,7 +1,7 @@
 const mailer = require('nodemailer');
 
 module.exports = (mensagem) => {
-  const smtp = mailer.createTransport({ // Configura os parâmetros de conexão com servidor.
+  const smtp = mailer.createTransport({
     host: "smtp.terra.com.br",
     port: 587,
     secure: false,
@@ -9,16 +9,17 @@ module.exports = (mensagem) => {
       user: "segiocarreiro@terra.com.br",
       pass: "d06m06"
     },
-  tls:{
-      rejectUnauthorized:false
-  }
+    requireTLS: true, // Habilita o STARTTLS
+    tls: {
+      ciphers: 'SSLv3'
+    }
   });
 
-  const mail = { // Define informações pertinentes ao E-mail que será enviado
-  from: "segiocarreiro@terra.com.br",
-  to: "mrlon.mra@gmail.com",
-  subject: "Contato pelo Site",
-  text: mensagem
+  const mail = {
+    from: "segiocarreiro@terra.com.br",
+    to: "mrlon.mra@gmail.com",
+    subject: "Contato pelo Site",
+    text: mensagem
   };
 
   return new Promise((resolve, reject) => {
@@ -26,10 +27,10 @@ module.exports = (mensagem) => {
       .then(response => {
         smtp.close();
         return resolve(response);
-    })
-    .catch(error => {
-      smtp.close();
-      return reject(error); 
-    })
-  })
-}
+      })
+      .catch(error => {
+        smtp.close();
+        return reject(error);
+      });
+  });
+};
