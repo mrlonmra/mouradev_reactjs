@@ -45,7 +45,7 @@ function Header() {
     } catch (err) {
       setResponse({
         type: "error",
-        mensagem: "Erro: Tente mais tarde!",
+        mensagem: "Erro de Sistema: Favor aguardar manutenção!",
       });
     }
   };
