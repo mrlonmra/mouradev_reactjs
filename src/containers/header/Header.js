@@ -20,7 +20,7 @@ function Header() {
     e.preventDefault();
     try {
       const res = await fetch("/send-email", {
-        method: "GET",
+        method: "POST",
         body: JSON.stringify(campos),
         headers: { "Content-Type": "application/json" },
       });
