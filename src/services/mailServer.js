@@ -1,7 +1,7 @@
 const mailer = require('nodemailer');
 
-module.exports = (mensagem) => {
-  const smtp = mailer.createTransport({ // Configura os parâmetros de conexão com servidor.
+module.exports = async (mensagem) => {
+  const smtp = mailer.createTransport({
     host: "mail.chipsete.com.br",
     port: 587,
     secure: false,
@@ -9,27 +9,24 @@ module.exports = (mensagem) => {
       user: "douglas@chipsete.com.br",
       pass: "P@##w0rd"
     },
-  tls:{
-      rejectUnauthorized:false
-  }
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 
-  const mail = { // Define informações pertinentes ao E-mail que será enviado
-  from: "douglas@chipsete.com.br",
-  to: "mrlon.mra@gmail.com",
-  subject: "Contato pelo Site",
-  text: mensagem
+  const mail = {
+    from: "douglas@chipsete.com.br",
+    to: "mrlon.mra@gmail.com",
+    subject: "Contato pelo Site",
+    text: mensagem
   };
 
-  return new Promise((resolve, reject) => {
-    smtp.sendMail(mail)
-      .then(response => {
-        smtp.close();
-        return resolve(response);
-    })
-    .catch(error => {
-      smtp.close();
-      return reject(error); 
-    })
-  })
-}
+  try {
+    const response = await smtp.sendMail(mail);
+    smtp.close();
+    return response;
+  } catch (error) {
+    smtp.close();
+    throw error;
+  }
+};
