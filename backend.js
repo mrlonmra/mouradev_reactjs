@@ -8,7 +8,7 @@ const mailServer = require("./src/services/mailServer");
 app.use(express.json());
 app.use(cors()); // Habilita o CORS para todas as origens
 
-app.get("/send-email", (req, res, next) => {
+app.post("/send-email", (req, res, next) => {
   const { mensagem } = req.body;
   mailServer(mensagem)
     .then((response) =>
